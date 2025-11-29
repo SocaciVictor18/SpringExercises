@@ -7,6 +7,11 @@ public class Parrot {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "Parrot : " + name;
+    }
+
     public void setName(String name) {
         this.name = name;
     }

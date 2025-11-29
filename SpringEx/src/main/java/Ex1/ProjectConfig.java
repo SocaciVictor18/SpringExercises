@@ -9,6 +9,23 @@ import org.springframework.context.annotation.Primary;
 //@ComponentScan(basePackages = "Ex1")
 public class ProjectConfig {
 
+
+
+    @Bean
+    public Parrot parrot(){
+        Parrot parrot = new Parrot();
+        parrot.setName("Koko");
+        return parrot;
+    }
+
+    @Bean
+    public Person person() {
+        Person p = new Person();
+        p.setName("Ella");
+        p.setParrot(parrot());
+        return p;
+    }
+
 //    @Bean
 //    @Primary
 //    Parrot parrot() {

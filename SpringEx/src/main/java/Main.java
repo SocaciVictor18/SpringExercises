@@ -1,7 +1,4 @@
-import Ex1.Cat;
-import Ex1.Dog;
-import Ex1.Parrot;
-import Ex1.ProjectConfig;
+import Ex1.*;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.function.Supplier;
@@ -10,26 +7,41 @@ public class Main {
     static void main() {
         var context =
                 new AnnotationConfigApplicationContext(ProjectConfig.class);
-        Cat cat1 = new Cat();
-        cat1.setName("Mala");
+        Person person = context.getBean(Person.class);
+        Parrot parrot = context.getBean(Parrot.class);
 
-        Cat cat2 = new Cat();
-        cat2.setName("Miti");
+        System.out.println(
+                "Person's name: " + person.getName());
 
-        Supplier<Cat> catSupplier2 = () -> cat2;
-        context.registerBean("cat2",
-                Cat.class,
-                catSupplier2,
-                bc-> bc.setPrimary(true));
+        System.out.println(
+                "Parrot's name: " + parrot.getName());
 
-        Supplier<Cat> catSupplier = () -> cat1;
-        context.registerBean("cat1", Cat.class, catSupplier);
+        System.out.println(
+                "Person's parrot: " + person.getParrot());
 
-        Cat catContext = context.getBean("cat1", Cat.class);
-        System.out.println(catContext.getName());
 
-        Cat catContext2 = context.getBean(Cat.class);
-        System.out.println(catContext2.getName());
+//        var context =
+//                new AnnotationConfigApplicationContext(ProjectConfig.class);
+//        Cat cat1 = new Cat();
+//        cat1.setName("Mala");
+//
+//        Cat cat2 = new Cat();
+//        cat2.setName("Miti");
+//
+//        Supplier<Cat> catSupplier2 = () -> cat2;
+//        context.registerBean("cat2",
+//                Cat.class,
+//                catSupplier2,
+//                bc-> bc.setPrimary(true));
+//
+//        Supplier<Cat> catSupplier = () -> cat1;
+//        context.registerBean("cat1", Cat.class, catSupplier);
+//
+//        Cat catContext = context.getBean("cat1", Cat.class);
+//        System.out.println(catContext.getName());
+//
+//        Cat catContext2 = context.getBean(Cat.class);
+//        System.out.println(catContext2.getName());
 
 //        Dog dog = context.getBean(Dog.class);
 //
