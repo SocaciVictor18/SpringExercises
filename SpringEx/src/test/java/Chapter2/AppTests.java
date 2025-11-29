@@ -28,4 +28,22 @@ public class AppTests {
 
         assertEquals("Koko", p.getName());
     }
+
+    @Test
+    @DisplayName("Test that the String 'hello' " +
+            "has been added to the Spring context.")
+    public void testHelloIsInTheSpringContext(){
+        String hello = context.getBean(String.class);
+
+        assertEquals("Hello", hello);
+    }
+
+    @Test
+    @DisplayName("Test that the Integer 10 " +
+            "has been added to the Spring context.")
+    public void test10IsInTheSpringContext(){
+        Integer ten = context.getBean(Integer.class);
+
+        assertEquals(10, ten);
+    }
 }
