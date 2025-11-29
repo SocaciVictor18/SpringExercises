@@ -6,25 +6,27 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 @Configuration
-//@ComponentScan(basePackages = "Ex1")
+@ComponentScan(basePackages = "Ex1")
 public class ProjectConfig {
 
 
 
-    @Bean
-    public Parrot parrot(){
-        Parrot parrot = new Parrot();
-        parrot.setName("Koko");
-        return parrot;
-    }
 
-    @Bean
-    public Person person(Parrot parrot){
-        Person p = new Person();
-        p.setName("Ella");
-        p.setParrot(parrot);
-        return p;
-    }
+
+//    @Bean
+//    public Parrot parrot(){
+//        Parrot parrot = new Parrot();
+//        parrot.setName("Koko");
+//        return parrot;
+//    }
+//
+//    @Bean
+//    public Person person(Parrot parrot){
+//        Person p = new Person();
+//        p.setName("Ella");
+//        p.setParrot(parrot);
+//        return p;
+//    }
 
 
 //    @Bean
