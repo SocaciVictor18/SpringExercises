@@ -24,9 +24,33 @@ public class AppTests {
             "with the attribute name having the value Koko " +
             "has been added to the Spring context.")
     public void testKokoIsInTheSpringContext() {
-        Parrot p = context.getBean(Parrot.class);
+        Parrot p = context.getBean("parrot", Parrot.class);
 
         assertEquals("Koko", p.getName());
+    }
+
+    @Test
+    @DisplayName("Test that parrot 1 has the name Koko")
+    public void testParrot1HasTheNameKoko(){
+        Parrot p = context.getBean("parrot", Parrot.class);
+
+        assertEquals("Koko", p.getName());
+    }
+
+    @Test
+    @DisplayName("Test that parrot 2 has the name Miki")
+    public void testParrot2HasTheNameMiki(){
+        Parrot p = context.getBean("parrot2", Parrot.class);
+
+        assertEquals("Miki", p.getName());
+    }
+
+    @Test
+    @DisplayName("Test that parrot 3 has the name Riki")
+    public void testParrot3HasTheNameRiki(){
+        Parrot p = context.getBean("parrot3", Parrot.class);
+
+        assertEquals("Riki", p.getName());
     }
 
     @Test
