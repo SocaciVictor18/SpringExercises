@@ -70,4 +70,12 @@ public class AppTests {
 
         assertEquals(10, ten);
     }
+
+    @Test
+    @DisplayName("Test that the default bean for parrot is the primary one.")
+    public void testDefaultBeanIsPrimary(){
+        Parrot p = context.getBean(Parrot.class);
+
+        assertEquals("Koko", p.getName());
+    }
 }

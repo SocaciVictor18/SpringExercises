@@ -7,7 +7,7 @@ public class Main {
         var context =
                 new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        Parrot parot1 = context.getBean("parrot", Parrot.class);
+        Parrot parot1 = context.getBean(Parrot.class);
         Parrot parot2 = context.getBean("parrot2",Parrot.class);
         Parrot parot3= context.getBean("parrot3",Parrot.class);
 
