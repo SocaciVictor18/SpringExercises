@@ -10,10 +10,19 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class Main {
     public static void main(String[] args) {
 
-        var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
-        System.out.println("Before retrieving the CommentService");
-        var service = context.getBean(CommentService.class);
-        System.out.println("After retrieving the CommentService");
+            var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
+
+            var cs1 = c.getBean("commentService", CommentService.class);
+            var cs2 = c.getBean("commentService", CommentService.class);
+
+            boolean b1 = cs1 == cs2;
+            System.out.println(b1);
+
+
+//        var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
+//        System.out.println("Before retrieving the CommentService");
+//        var service = context.getBean(CommentService.class);
+//        System.out.println("After retrieving the CommentService");
 
 //        var comment = new Comment();
 //        comment.setAuthor("Victor");

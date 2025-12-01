@@ -9,8 +9,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 //@Component
-@Service
-@Lazy
+//@Service
+//@Lazy
 public class CommentService {
 //    private final CommentRepository commentRepository;
 //    private final CommnetNotificationProxy notificationProxy;
@@ -20,21 +20,21 @@ public class CommentService {
 //        this.commentRepository = commentRepository;
 //        this.notificationProxy = notificationProxy;
 //    }
-    private final CommentRepository commentRepository;
-
-    private final CommentNotificationProxy commentNotificationProxy;
-
-    public CommentService(
-            CommentRepository commentRepository,
-            @Qualifier("EMAIL") CommentNotificationProxy commentNotificationProxy) {
-
-        this.commentRepository = commentRepository;
-        this.commentNotificationProxy = commentNotificationProxy;
-        System.out.println("Service created");
-    }
-
-    public void publishComment(Comment comment) {
-        commentRepository.storeComment(comment);
-        commentNotificationProxy.sendComment(comment);
-    }
+//    private final CommentRepository commentRepository;
+//
+//    private final CommentNotificationProxy commentNotificationProxy;
+//
+//    public CommentService(
+//            CommentRepository commentRepository,
+//            @Qualifier("EMAIL") CommentNotificationProxy commentNotificationProxy) {
+//
+//        this.commentRepository = commentRepository;
+//        this.commentNotificationProxy = commentNotificationProxy;
+//        System.out.println("Service created");
+//    }
+//
+//    public void publishComment(Comment comment) {
+//        commentRepository.storeComment(comment);
+//        commentNotificationProxy.sendComment(comment);
+//    }
 }
