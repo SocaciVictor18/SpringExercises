@@ -9,12 +9,12 @@ import org.springframework.context.annotation.*;
 //@ComponentScan(basePackages = "Ex1")
 @ComponentScan(basePackages = {"Ex2.proxies", "Ex2.repository", "Ex2.services"})
 public class ProjectConfig {
-
-    @Bean
-    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
-    public CommentService commentService() {
-        return new CommentService();
-    }
+//
+//    @Bean
+//    @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+//    public CommentService commentService() {
+//        return new CommentService();
+//    }
 //    @Bean
 //    public Parrot parrot1() {
 //        Parrot p = new Parrot();

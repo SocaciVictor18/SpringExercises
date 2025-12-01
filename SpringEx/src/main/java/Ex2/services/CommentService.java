@@ -3,15 +3,24 @@ package Ex2.services;
 import Ex2.model.Comment;
 import Ex2.proxies.CommentNotificationProxy;
 import Ex2.repository.CommentRepository;
+import Ex2.repository.PrototypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 //@Component
-//@Service
+@Service
 //@Lazy
 public class CommentService {
+
+    @Autowired
+    private PrototypeRepository prototypeRepository;
+
+    public PrototypeRepository getPrototypeRepository() {
+        return prototypeRepository;
+    }
 //    private final CommentRepository commentRepository;
 //    private final CommnetNotificationProxy notificationProxy;
 //
