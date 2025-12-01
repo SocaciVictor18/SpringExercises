@@ -1,7 +1,6 @@
-import Ex1.*;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+package Ex1;
 
-import java.util.function.Supplier;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
     static void main() {
