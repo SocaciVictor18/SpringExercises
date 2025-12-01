@@ -3,13 +3,13 @@ package Ex1;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Main {
-    static void main() {
-        var context =
-                new AnnotationConfigApplicationContext(ProjectConfig.class);
-
-        Person p = context.getBean(Person.class);
-        System.out.println("Person's name: " + p.getName());
-        System.out.println("Person's parrot: " + p.getParrot());
+//    static void main() {
+//        var context =
+//                new AnnotationConfigApplicationContext(ProjectConfig.class);
+//
+//        Person p = context.getBean(Person.class);
+//        System.out.println("Person's name: " + p.getName());
+//        System.out.println("Person's parrot: " + p.getParrot());
 
 //        Person person = context.getBean(Person.class);
 //        Parrot parrot = context.getBean(Parrot.class);
@@ -66,4 +66,4 @@ public class Main {
 //        Integer ten = context.getBean(Integer.class);
 //        System.out.println(ten);
     }
-}
+//}
