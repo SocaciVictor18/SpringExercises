@@ -2,8 +2,10 @@ package Ex2.repository;
 
 import Ex2.model.Comment;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
+//@Component
+@Repository
 public class DBCommentRepository implements CommentRepository{
 
     @Override

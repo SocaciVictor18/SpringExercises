@@ -5,8 +5,10 @@ import Ex2.proxies.CommentNotificationProxy;
 import Ex2.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+//@Component
+@Service
 public class CommentService {
 //    private final CommentRepository commentRepository;
 //    private final CommnetNotificationProxy notificationProxy;
