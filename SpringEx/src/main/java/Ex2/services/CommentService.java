@@ -28,6 +28,7 @@ public class CommentService {
 
         this.commentRepository = commentRepository;
         this.commentNotificationProxy = commentNotificationProxy;
+        System.out.println("Service created");
     }
 
     public void publishComment(Comment comment) {

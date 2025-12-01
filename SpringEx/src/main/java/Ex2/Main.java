@@ -12,12 +12,12 @@ public class Main {
 
         var context = new AnnotationConfigApplicationContext(ProjectConfig.class);
 
-        var comment = new Comment();
-        comment.setAuthor("Victor");
-        comment.setText("Demo comment");
-
-        var commentService = context.getBean(CommentService.class);
-        commentService.publishComment(comment);
+//        var comment = new Comment();
+//        comment.setAuthor("Victor");
+//        comment.setText("Demo comment");
+//
+//        var commentService = context.getBean(CommentService.class);
+//        commentService.publishComment(comment);
 
 //        var commentRepository =
 //                new DBCommentRepository();
