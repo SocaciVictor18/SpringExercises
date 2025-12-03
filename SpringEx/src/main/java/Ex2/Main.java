@@ -10,15 +10,15 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
-        var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
-
-        var s1 = c.getBean(CommentService.class);
-        var s2 = c.getBean(UserService.class);
-
-        boolean b =
-        s1.getPrototypeRepository() == s2.getPrototypeRepository();
-
-        System.out.println(b);
+//        var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
+//
+//        var s1 = c.getBean(CommentService.class);
+//        var s2 = c.getBean(UserService.class);
+//
+//        boolean b =
+//        s1.getPrototypeRepository() == s2.getPrototypeRepository();
+//
+//        System.out.println(b);
 
 
 //            var c = new AnnotationConfigApplicationContext(ProjectConfig.class);
