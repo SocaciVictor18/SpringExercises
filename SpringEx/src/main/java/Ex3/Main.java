@@ -5,7 +5,11 @@ import Ex3.model.Comment;
 import Ex3.services.CommentService;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.logging.Logger;
+
 public class Main {
+
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) {
 
@@ -17,7 +21,9 @@ public class Main {
         comment.setText("Demo comment");
         comment.setAuthor("Victor");
 
-        service.publishComment(comment);
+        String value = service.publishComment(comment);
+
+        logger.info(value);
 
     }
 }
