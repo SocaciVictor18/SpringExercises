@@ -23,8 +23,8 @@ public class Main {
 
 
         service.publishComment(comment);
-        service.deleteComment(comment);
-        service.editComment(comment);
+//        service.deleteComment(comment);
+//        service.editComment(comment);
 
     }
 }

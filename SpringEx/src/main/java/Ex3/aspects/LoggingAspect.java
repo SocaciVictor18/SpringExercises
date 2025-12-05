@@ -2,6 +2,7 @@ package Ex3.aspects;
 
 import Ex3.model.Comment;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 
@@ -13,21 +14,38 @@ public class LoggingAspect {
 
     private final Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
-    @Around("@annotation(ToLog)")
+    @Around(value = "@annotation(ToLog)")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
-        String methodName = joinPoint.getSignature().getName();
-        Object [] arguments = joinPoint.getArgs();
+        logger.info("Logging Aspect: Calling the intercepted method");
 
-        logger.info("Method " + methodName +
-                " with parameters " + Arrays.asList(arguments) +
-                " will execute");
+        Object returnedValue = joinPoint.proceed();
 
-        Object returnedByMethod = joinPoint.proceed();
+        logger.info("Logging Aspect: Method executed and returned " +
+                returnedValue);
 
-        logger.info("Method executed and returned " + returnedByMethod);
-
-        return returnedByMethod;
+        return returnedValue;
     }
+
+//    @AfterReturning(value = "@annotation(ToLog)",
+//    returning = "returnedValue")
+//    public void log(Object returnedValue) {
+//        logger.info("Method executed and returned " + returnedValue);
+//    }
+//    @Around("@annotation(ToLog)")
+//    public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
+//        String methodName = joinPoint.getSignature().getName();
+//        Object [] arguments = joinPoint.getArgs();
+//
+//        logger.info("Method " + methodName +
+//                " with parameters " + Arrays.asList(arguments) +
+//                " will execute");
+//
+//        Object returnedByMethod = joinPoint.proceed();
+//
+//        logger.info("Method executed and returned " + returnedByMethod);
+//
+//        return returnedByMethod;
+//    }
 
 //    @Around("@annotation(Ex3.aspects.ToLog)")
 //    public Object log (ProceedingJoinPoint joinPoint) throws Throwable {
