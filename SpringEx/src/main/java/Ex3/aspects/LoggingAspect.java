@@ -13,26 +13,49 @@ public class LoggingAspect {
 
     private final Logger logger = Logger.getLogger(LoggingAspect.class.getName());
 
-    @Around("execution(* Ex3.services.*.*(..))")
+    @Around("@annotation(ToLog)")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
         String methodName = joinPoint.getSignature().getName();
         Object [] arguments = joinPoint.getArgs();
-
 
         logger.info("Method " + methodName +
                 " with parameters " + Arrays.asList(arguments) +
                 " will execute");
 
-        Comment comment = new Comment();
-        comment.setText("Some other text!");
-        Object [] newArguments = {comment};
-
-        Object returnedByMethod = joinPoint.proceed(newArguments);
+        Object returnedByMethod = joinPoint.proceed();
 
         logger.info("Method executed and returned " + returnedByMethod);
 
-        return "FAILED";
+        return returnedByMethod;
     }
+
+//    @Around("@annotation(Ex3.aspects.ToLog)")
+//    public Object log (ProceedingJoinPoint joinPoint) throws Throwable {
+//        logger.info("Logging Aspect: Calling the intercepted method");
+//        Object returnedValue = joinPoint.proceed();
+//        logger.info("Logging Aspect: Method executed and returned " + returnedValue);
+//        return returnedValue;
+//    }
+//    @Around("execution(* Ex3.services.*.*(..))")
+//    public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
+//        String methodName = joinPoint.getSignature().getName();
+//        Object [] arguments = joinPoint.getArgs();
+//
+//
+//        logger.info("Method " + methodName +
+//                " with parameters " + Arrays.asList(arguments) +
+//                " will execute");
+//
+//        Comment comment = new Comment();
+//        comment.setText("Some other text!");
+//        Object [] newArguments = {comment};
+//
+//        Object returnedByMethod = joinPoint.proceed(newArguments);
+//
+//        logger.info("Method executed and returned " + returnedByMethod);
+//
+//        return "FAILED";
+//    }
 
 //    @Around("execution(* Ex3.services.*.*(..))")
 //    public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
