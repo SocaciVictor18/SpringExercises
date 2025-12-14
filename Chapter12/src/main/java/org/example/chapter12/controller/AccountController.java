@@ -3,10 +3,7 @@ package org.example.chapter12.controller;
 import org.example.chapter12.model.Account;
 import org.example.chapter12.model.TransferRequest;
 import org.example.chapter12.service.TransferService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,6 +15,22 @@ public class AccountController {
     public AccountController(TransferService transferService) {
         this.transferService = transferService;
     }
+//
+//    @PostMapping("/transfer")
+//    public void transferMoney(
+//            @RequestBody TransferRequest request
+//    ) {
+//        transferService.transferMoney(
+//                request.getSenderAccountId(),
+//                request.getReceiverAccountId(),
+//                request.getAmount());
+//    }
+//
+//    @GetMapping("/accounts")
+//    public List<Account> getAllAccounts() {
+//        return transferService.getAllAccounts();
+//    }
+
 
     @PostMapping("/transfer")
     public void transferMoney(
@@ -30,7 +43,13 @@ public class AccountController {
     }
 
     @GetMapping("/accounts")
-    public List<Account> getAllAccounts() {
-        return transferService.getAllAccounts();
+    public Iterable<Account> getAllAccounts(
+            @RequestParam(required = false) String name
+    ) {
+        if (name == null) {
+            return transferService.getAllAccounts();
+        } else {
+            return transferService.findAccountsByName(name);
+        }
     }
 }
