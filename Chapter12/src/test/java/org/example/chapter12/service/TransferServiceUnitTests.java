@@ -1,34 +1,22 @@
 package org.example.chapter12.service;
 
 
-import org.example.chapter12.exception.AccountNotFoundException;
 import org.example.chapter12.model.Account;
 import org.example.chapter12.repository.AccountRepo;
-import org.example.chapter12.repository.AccountRepository;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
-import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.given;
-import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//@ExtendWith(MockitoExtension.class)
 @SpringBootTest
+@ActiveProfiles("test")
 public class TransferServiceUnitTests {
 
-
-    @MockitoBean
+    @Autowired
     private AccountRepo accountRepository;
 
     @Autowired
@@ -36,26 +24,20 @@ public class TransferServiceUnitTests {
 
     @Test
     void transferServiceTransferAmountTest() {
-        Account sender = new Account();
-        sender.setId(1);
-        sender.setAmount(new BigDecimal(1000));
+        Account sender = accountRepository.findById(1L).orElseThrow();
+        Account receiver = accountRepository.findById(2L).orElseThrow();
 
-        Account receiver = new Account();
-        receiver.setId(2);
-        receiver.setAmount(new BigDecimal(1000));
+        BigDecimal senderInitialAmount = sender.getAmount();
+        BigDecimal receiverInitialAmount = receiver.getAmount();
+        BigDecimal transferAmount = new BigDecimal("100");
 
-        when(accountRepository.findById(1L))
-      .thenReturn(Optional.of(sender));
-        when(accountRepository.findById(2L))
-      .thenReturn(Optional.of(receiver));
+        transferService.transferMoney(1, 2, transferAmount);
 
-        transferService
-                .transferMoney(1, 2, new BigDecimal(100));
+        Account updatedSender = accountRepository.findById(1L).orElseThrow();
+        Account updatedReceiver = accountRepository.findById(2L).orElseThrow();
 
-        verify(accountRepository)
-      .changeAmount(1, new BigDecimal(900));
-        verify(accountRepository)
-      .changeAmount(2, new BigDecimal(1100));
+        assertEquals(0, senderInitialAmount.subtract(transferAmount).compareTo(updatedSender.getAmount()));
+        assertEquals(0, receiverInitialAmount.add(transferAmount).compareTo(updatedReceiver.getAmount()));
     }
 
 //    @Mock
